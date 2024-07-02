@@ -1,7 +1,7 @@
-const stateMachine = "State Machine 1";
+const stateMachine = "Floor 4";
 
 const riveInstance = new rive.Rive({
-	src: "src/.riv", //get rive file
+	src: "src/floor-4.riv", //get rive file
 	canvas: document.getElementById("rive"), //get correct canvas
 	autoplay: true,
 	stateMachines: stateMachine, // get correct stateMachine
@@ -11,7 +11,7 @@ const riveInstance = new rive.Rive({
 });
 
 // Handle the onLoad event
-const onLoadHandler = () => {
+function onLoadHandler() {
 	// Prevent a blurry canvas by using the device pixel ratio
 	riveInstance.resizeDrawingSurfaceToCanvas();
 
@@ -26,13 +26,13 @@ const onLoadHandler = () => {
 	//riveInstance.setNumberStateAtPath(inputName, number, path)
 	//riveInstance.setBooleanStateAtPath(inputName, boolean, path)
 	//riveInstance.fireStateAtPath(inputName, path)
-};
+}
 
 // Handle the onStateChange event
-const onStateChangeHandler = (e) => {
+function onStateChangeHandler(e) {
 	// Custom logic for state change
 	// console.log(e.data[0]); // Get curent timeline name
-};
+}
 
 // Resize the drawing surface if the window resizes
 window.addEventListener(

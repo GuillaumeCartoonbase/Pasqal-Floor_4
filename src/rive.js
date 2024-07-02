@@ -16,6 +16,9 @@ function onLoadHandler() {
 	riveInstance.resizeDrawingSurfaceToCanvas();
 
 	const inputs = riveInstance.stateMachineInputs(stateMachine);
+
+	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
+
 	// myInput = inputs.find((i) => i.name === "inputName");
 	// myInput.value = true;
 
@@ -57,6 +60,15 @@ const eventFire = (riveEvent) => {
 		case "OnHoverExit":
 			document.body.style.cursor = "auto";
 			break;
+
+		// Levitate marble when on a lesson, not in movement
+		case "marbleLevitateON":
+			inputMarbleHover.value = true;
+			break;
+		case "marbleLevitateOFF":
+			inputMarbleHover.value = false;
+			break;
+
 		default:
 			console.log("Unhandled event:", eventName, "\n", riveEvent);
 			break;

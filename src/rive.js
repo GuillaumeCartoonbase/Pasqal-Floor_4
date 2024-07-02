@@ -7,7 +7,6 @@ const riveInstance = new rive.Rive({
 	stateMachines: stateMachine, // get correct stateMachine
 	automaticallyHandleEvents: true, // Automatically handle RiveHTTPEvents
 	onLoad: onLoadHandler,
-	onStateChange: onStateChangeHandler,
 });
 
 const lessons = 6; // Number of lessons
@@ -57,11 +56,6 @@ function onLoadHandler() {
 	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
 
 	inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
-}
-
-// Handle the onStateChange event
-function onStateChangeHandler(e) {
-	// Custom logic for state change
 }
 
 // Resize the drawing surface if the window resizes

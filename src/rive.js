@@ -52,6 +52,8 @@ function onLoadHandler() {
 		);
 		// inputLessonsTrigger[0].fire()
 	}
+	// Trigger marble to next level
+	triggerNextLevel = inputs.find((i) => i.name === "Trigger Next Level");
 
 	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
 

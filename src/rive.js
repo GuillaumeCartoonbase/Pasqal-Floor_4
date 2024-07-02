@@ -109,6 +109,15 @@ const eventFire = (riveEvent) => {
 			riveInstance
 				.stateMachineInputs(stateMachine)
 				.find((i) => i.name === `isOn${lessonN}`).value = whereAmI();
+
+			/*
+			riveInstance
+				.stateMachineInputs(stateMachine)
+				.find((i) => i.name === `Lesson ${lessonN} Hover`).value = whereAmI();
+				*/
+
+			// riveInstance.setBooleanStateAtPath("spot - hover", true, "Lesson 1");
+			// riveInstance.setBooleanStateAtPath("spot - hover", false, "Lesson 1");
 			break;
 
 		// Lesson launcher

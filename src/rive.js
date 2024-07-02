@@ -23,23 +23,11 @@ function onLoadHandler() {
 	playerSelector.value = playerID;
 
 	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
-
-	// myInput = inputs.find((i) => i.name === "inputName");
-	// myInput.value = true;
-
-	// Text change
-	// riveInstance.setTextRunValue(textRun, newString);
-
-	// Nested inputs setup
-	//riveInstance.setNumberStateAtPath(inputName, number, path)
-	//riveInstance.setBooleanStateAtPath(inputName, boolean, path)
-	//riveInstance.fireStateAtPath(inputName, path)
 }
 
 // Handle the onStateChange event
 function onStateChangeHandler(e) {
 	// Custom logic for state change
-	// console.log(e.data[0]); // Get curent timeline name
 }
 
 // Resize the drawing surface if the window resizes

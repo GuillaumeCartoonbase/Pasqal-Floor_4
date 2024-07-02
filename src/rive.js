@@ -10,6 +10,9 @@ const riveInstance = new rive.Rive({
 	onStateChange: onStateChangeHandler,
 });
 
+const lessons = 6; // Number of lessons
+const inputLessonsDone = []; // Lessons status
+
 // Handle the onLoad event
 function onLoadHandler() {
 	// Prevent a blurry canvas by using the device pixel ratio
@@ -22,7 +25,17 @@ function onLoadHandler() {
 	playerSelector = inputs.find((i) => i.name === "playerProfile");
 	playerSelector.value = playerID;
 
+	for (let i = 1; i <= lessons; i++) {
+		// Get lesson done status
+		inputLessonsDone.push(
+			inputs.find((input) => input.name === `isLesson${i}Done`)
+		);
+		// inputLessonsDone[0].value = true;
+	}
+
 	inputMarbleHover = inputs.find((i) => i.name === "marble hovering");
+
+	inputLessonsCounter = inputs.find((i) => i.name === "lessonCounter");
 }
 
 // Handle the onStateChange event
@@ -95,3 +108,12 @@ const eventFire = (riveEvent) => {
 
 // Register the event handler
 riveInstance.on(rive.EventType.RiveEvent, eventFire);
+
+// To update number in counter
+const lessonCounter = () => {
+	let total = 0;
+	for (let i = 0; i < lessons; i++) {
+		total += inputLessonsDone[i].value == true ? 1 : 0;
+	}
+	return (inputLessonsCounter.value = total);
+};

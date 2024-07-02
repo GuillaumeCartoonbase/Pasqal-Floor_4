@@ -81,6 +81,12 @@ const eventFire = (riveEvent) => {
 				.find((i) => i.name === `isOn${lessonN}`).value = whereAmI();
 			break;
 
+		// Lesson launcher
+		case "LessonEvent":
+		case "NextLevel":
+			console.log(eventName);
+			break;
+
 		default:
 			console.log("Unhandled event:", eventName, "\n", riveEvent);
 			break;

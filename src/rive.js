@@ -120,16 +120,8 @@ const eventFire = (riveEvent) => {
 				.stateMachineInputs(stateMachine)
 				.find((i) => i.name === `isOn${lessonN}`).value = false;
 
-			inputLessonsDone[eventName.split("-")[1] - 1].value = true;
-			lessonCounter();
-			/*
-				riveInstance
-				.stateMachineInputs(stateMachine)
-				.find((i) => i.name === `Lesson ${lessonN} Hover`).value = whereAmI();
-				*/
-
-			// riveInstance.setBooleanStateAtPath("spot - hover", true, "Lesson 1");
-			// riveInstance.setBooleanStateAtPath("spot - hover", false, "Lesson 1");
+			// inputLessonsDone[eventName.split("-")[1] - 1].value = true;
+			// lessonCounter();
 			break;
 
 		// Lesson launcher

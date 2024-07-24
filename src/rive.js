@@ -81,9 +81,10 @@ const eventFire = (riveEvent) => {
 	const eventData = riveEvent.data;
 	const eventName = eventData.name;
 	const eventProperties = eventData.properties;
-	let lessonN = eventName.slice(-1);
 
 	const eventKey = eventName.split("-")[0];
+	let eventIndex = eventName.slice(-1);
+
 	switch (eventKey) {
 		// Fire marble movements from card's buttons
 		case "cardbutton":
@@ -107,12 +108,12 @@ const eventFire = (riveEvent) => {
 			riveInstance.setBooleanStateAtPath(
 				"lessonHover",
 				true,
-				`Lesson ${eventName.slice(-1)}`
+				`Lesson ${eventIndex}`
 			);
 
 			riveInstance
 				.stateMachineInputs(stateMachine)
-				.find((i) => i.name === `isOn${lessonN}`).value = true;
+				.find((i) => i.name === `isOn${eventIndex}`).value = true;
 			break;
 		case "Off":
 			riveInstance.setBooleanStateAtPath(
@@ -123,7 +124,7 @@ const eventFire = (riveEvent) => {
 
 			riveInstance
 				.stateMachineInputs(stateMachine)
-				.find((i) => i.name === `isOn${lessonN}`).value = false;
+				.find((i) => i.name === `isOn${eventIndex}`).value = false;
 
 			// inputLessonsDone[eventName.split("-")[1] - 1].value = true;
 			// lessonCounter();

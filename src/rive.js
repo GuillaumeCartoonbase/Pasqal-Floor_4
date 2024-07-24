@@ -77,7 +77,7 @@ const eventFire = (riveEvent) => {
 	const eventProperties = eventData.properties;
 
 	const eventKey = eventName.split("-")[0];
-	let eventIndex = eventName.slice(-1);
+	const eventIndex = eventName.slice(-1);
 
 	switch (eventKey) {
 		// Fire marble movements from card's buttons

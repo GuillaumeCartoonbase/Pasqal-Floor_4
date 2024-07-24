@@ -121,9 +121,6 @@ const eventFire = (riveEvent) => {
 			riveInstance
 				.stateMachineInputs(stateMachine)
 				.find((i) => i.name === `isOn${eventIndex}`).value = false;
-
-			// inputLessonsDone[eventName.split("-")[1] - 1].value = true;
-			// lessonCounter();
 			break;
 
 		// Lesson launcher

@@ -11,6 +11,8 @@ const riveInstance = new rive.Rive({
 });
 
 const lessons = 4; // Number of lessons
+const lessonsDone = []; // Lessons status
+const haloLessonActive = []; // Lessons status
 const inputLessonsStarted = []; // Lessons status
 const inputLessonsDone = []; // Lessons status
 const inputIsLessonsHover = []; // Lesson pointer hover
@@ -39,9 +41,11 @@ function onLoadHandler() {
 		);
 
 		// Get lesson done status
-		// inputLessonsDone[0].value = true; (true, false)
-		inputLessonsDone.push(
+		haloLessonActive.push(
 			inputs.find((input) => input.name === `isLesson${i}Done`)
+		);
+		lessonsDone.push(
+			riveInstance.retrieveInputAtPath(`isDone${i}`, "compteur").asBool().value
 		);
 
 		// Hover effect
@@ -146,7 +150,21 @@ riveInstance.on(rive.EventType.RiveEvent, eventFire);
 const lessonCounter = () => {
 	let total = 0;
 	for (let i = 0; i < lessons; i++) {
-		total += inputLessonsDone[i].value == true ? 1 : 0;
+		total += lessonsDone[i] == true ? 1 : 0;
 	}
-	return (inputLessonsCounter.value = total);
+
+	riveInstance.setTextRunValueAtPath(
+		"lessonsLearned",
+		total.toString(),
+		"compteur"
+	);
+	return total;
 };
+
+function lessonNdone(n, status) {
+	result = status;
+	riveInstance.setBooleanStateAtPath(`isDone${n}`, result, "compteur");
+	lessonsDone[n - 1] = result;
+	haloLessonActive[n - 1].value = result;
+	lessonCounter();
+}
